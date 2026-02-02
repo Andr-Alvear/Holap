@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta charset="UTF-8">
+<title>Gato Negro Animado</title>
+<style>
+/* GATO_____________________________________________________________________________*/
+
+  body {
+  margin: 0;
+  background: #aae6f1;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  min-height: 100svh; /* mejor que 100vh en móvil */
+  overflow: hidden;
+}
+
+
+  .cat {
+    position: absolute;
+    width: 150px;
+    height: 150px;
+    top: 290px;
+    left: 300px;
+  
+  }
+.head-wrap {
+  position: absolute;
+  top: 85px;
+  left: 140px;
+
+  animation: headFloat 4.5s ease-in-out infinite;
+}
+  /* Cabeza */
+  .head {
+    position: absolute;
+    width: 100px;
+    height: 95px;
+    background: black;
+    border-radius: 50%;
+    position: absolute;
+    box-shadow: inset 0.3px -0.2px 5px rgba(213, 203, 203, 0.233);
+
+    animation: headCurve 5s ease-in-out infinite;
+    transform-origin: 50% 80%;
+  }
+  /* Orejas */
+ .ear {
+   position: absolute;
+   top: -100px; 
+   width: 5;
+   height: 5;
+   border-top: 20px solid transparent;
+   border-bottom: 20px solid transparent;
+   border-left: 25px solid black;
+  }
+ .ear.right {
+  border-left: none;
+  border-right: 25px solid black;
+}
+
+.ear.left {
+  position: absolute;
+  top: 0px;
+  left: 5px;
+  border-top: 20px solid transparent;
+  border-bottom: 20px solid transparent;
+  border-right: 25px solid black;
+}
+.ear.right {
+  position: absolute;
+  top:0px;
+  right: 3px;
+  border-top: 20px solid transparent;
+  border-bottom: 20px solid transparent;
+  border-left: 25px solid black;
+}
+  /* Ojos */
+  .eye {
+    width: 17px;
+    height: 17px;
+    background: yellow;
+    border-radius: 50%;
+    position: absolute;
+    top: 35px;
+    animation: blink 3s infinite;
+  }
+  .eye.left { left: 27px; }
+  .eye.right { right: 27px; }
+
+  .nose {
+  width: 18px;
+  height: 10px;
+  background: rgba(255, 192, 203, 0.549);
+  position: absolute;
+  top: 51px;
+  left: 41px;
+
+  clip-path: polygon(50% 100%, 0 0, 100% 0);
+  border-radius: 4px;
+}
+  .body {
+  width: 200px;
+  height: 110px;
+  background: linear-gradient(
+    to top,
+    rgb(0, 0, 0),
+    rgb(0, 0, 0) 40%,
+    #000000 100%
+  );
+  border-radius: 200px 200px 0 0;
+  position: absolute;
+  top: 70px;
+  left: -20px;
+
+  box-shadow:
+    inset 3px 1px 5px rgba(65, 62, 62, 0.472),
+    inset -0.3px 6px 5px rgb(0, 0, 0);
+}
+
+  /*patita*/ 
+.paw {
+  width: 90px;      
+  height: 30px;   
+  background: black;
+  border-radius: 15px;
+  position: absolute;
+  top: 150px;
+  left:120px;
+}
+.tail {
+  position: absolute;
+  top: 197px;
+  left:-270px;
+  
+  transform: rotate(90deg);
+  transform-origin: right center;
+}
+
+/* Estilo base */
+.tail-part {
+  position: absolute;
+}
+.p1 {
+  width: 20px;
+  height: 100px;
+  background: #000000;
+  border-radius: 0px;
+  top: -260px;
+  left:-37px;
+}
+.p2 {
+  width: 40px;
+  left: -9px;
+  top:-170px;
+  height: 30px;
+  border: 20px solid #000000;
+  border-top: none;
+  border-radius: 0 0 50px 50px;
+  margin-left: -28px;
+}*
+
+.p3 {
+  width: 15px;
+  top: -200px;
+  left: 16px;
+  height: 30px;
+  border: 20px solid #000000;
+  border-bottom: none;
+  border-radius: 50px 50px 0px 0px;
+  margin-left: -28px;
+  margin-top: -14px;
+
+}
+.p4 {
+  width: 20px;
+  top: -190px;
+  left:-12px;
+  height: 40px;
+  background: #000000;
+  border-radius: 15px;
+}
+/*___________________________________________________________________________________ GATO*/
+/*___________________________________________________________________________________MESA*/
+.table {
+  position: absolute;
+  /*top:180px;*/
+  left:0%;
+  bottom: 120px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+.table-top {
+  width: 450px;
+  height: 20px;
+  background: linear-gradient(
+    to bottom,
+    #8b5a2b,
+    #6e421f
+  );
+  border-radius: 6px;
+  box-shadow:
+    inset 0 3px 4px rgba(255,255,255,0.15),
+    inset 0 -4px 6px rgba(0,0,0,0.35),
+    0 12px 18px rgba(0,0,0,0.35);
+}
+.cat-shadow {
+  position: absolute;
+  width: 450px;
+  height: 40px;
+  background: radial-gradient(
+    ellipse at center,
+    rgba(0,0,0,0.45) 0%,
+    rgba(0,0,0,0.15) 40%,
+    transparent 30%
+  );
+  bottom: -10px;
+  left: -40px;
+  top:158px;
+  filter: blur(2px);
+}
+/*__________________________________________________________________________________MESA*/
+/* VENTANA_______________________________________________________________________________*/
+.window {
+  position: absolute;
+  top: 30%;
+  left: 30%;
+
+  width: 220px;
+  height: 220px;
+
+  background: linear-gradient(
+    to top,
+    #b3e5fc,
+    #e1f5fe,
+  );
+  transition: background 0.6s ease;
+
+  border: 8px solid #201f1ec6;
+  border-radius: 6px;
+
+  box-shadow:
+    inset 0 -6px 10px rgba(0,0,0,0.25),
+    inset 0 3px 6px rgba(255,255,255,0.25);
+}
+.cross.vertical {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+
+  width: 6px;
+  height: 100%;
+
+  background: #3a3a3a;
+}
+.cross.horizontal {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+
+  width: 100%;
+  height: 6px;
+
+  background: #3a3a3a;
+}
+/*___________________________________________________________________________________VENTANA*/
+/* SOL - LUNA________________________________________________________________________________*/
+.sun {
+  position: absolute;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+
+  background: radial-gradient(circle at 30% 30%, #fff9c4, #fbc02d);
+  top: 25px;
+  right: 35px;
+
+  box-shadow: 0 0 18px rgba(255,193,7,0.6);
+
+  opacity: 1;
+  transform: translateY(0);
+  transition: 0.6s ease;
+}
+
+.window.night .sun {
+  opacity: 0;
+  transform: translateY(40px);
+}
+.moon {
+  position: absolute;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+
+  background: radial-gradient(circle at 30% 30%, #ffffff, #cfd8dc);
+  top: 25px;
+  right: 35px;
+
+  box-shadow: 0 0 14px rgba(255,255,255,0.4);
+
+  opacity: 0;
+  transform: translateY(40px);
+  transition: 0.6s ease;
+}
+
+.window.night .moon {
+  opacity: 1;
+  transform: translateY(0);
+}
+/*____________________________________________________________________________SOL - LUNA*/
+
+
+
+/* INTERRUPTOR____________________________________________________________________________*/
+.switch {
+  position: absolute;
+  bottom: 40px;
+  right: 40px;
+  top: 250px;
+  left:550px;
+}
+.switch input {
+  display: none;
+}
+
+.switch label {
+  width: 60px;
+  height: 30px;
+  background: #555;
+  border-radius: 30px;
+  display: block;
+  cursor: pointer;
+  position: absolute;
+}
+
+.switch label::after {
+  content: "";
+  width: 24px;
+  height: 24px;
+  background: white;
+  border-radius: 50%;
+  position: absolute;
+  top: 3px;
+  left: 4px;
+  transition: 0.3s;
+}
+.switch input:checked + label {
+  background: #1a237e;
+}
+
+.switch input:checked + label::after {
+  transform: translateX(28px);
+}
+.window.day {
+  
+  background: linear-gradient(to top, #b3e5fc, #e1f5fe);
+}
+
+.window.night {
+  background: linear-gradient(to top, #1a237e, #0d1333);
+}
+.sun {
+  opacity: 1;
+  transition: 0.6s;
+}
+
+.window.night .sun {
+  opacity: 0;
+  transform: translateY(40px);
+}
+.moon {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: 0.6s;
+}
+
+.window.night .moon {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/*______________________________________________________________________________INTERRUPTOR*/
+
+
+.scene {
+  position: absolute;
+  width: 800px;
+  height: 600px;
+
+  transform-origin: center;
+  transform: translate(-50%, -50%);
+  left: 50%;
+  top: 50%; 
+}
+/*
+@media (max-width: 768px) {
+  .scene {
+    transform: scale(0.7);
+  }
+}
+
+@media (max-width: 480px) {
+  .scene {
+    transform: scale(0.5);
+  }
+}*/
+
+/* GATO___________________________________________________________________________________*/
+@keyframes headCurve {
+  0% {
+    transform: rotate(2deg) translateY(0);
+  }
+  40% {
+    transform: rotate(-3deg) translateY(-3px);
+  }
+  70% {
+    transform: rotate(1deg) translateY(-1px);
+  }
+  100% {
+    transform: rotate(2deg) translateY(0);
+  }
+}
+@keyframes headFloat {
+  0% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-35px);
+  }
+
+  100% {
+    transform: translateY(0);
+  }
+}
+
+  @keyframes blink {
+    0%, 90%, 100% { height: 14px; }
+    92%, 98% { height: 2px; }
+  }
+/* __________________________________________________________________________________GATO*/
+
+</style>
+</head>
+<body>
+<div class="scene">
+<div class="switch">
+  <input type="checkbox" id="toggle">
+  <label for="toggle"></label>
+</div>
+
+<div class="window day">
+  <div class="sun"></div>
+  <div class="moon"></div>
+
+  <div class="cross vertical"></div>
+  <div class="cross horizontal"></div>
+</div>
+
+
+<div class="table">
+  <div class="table-top"></div>
+</div>
+
+<div class="cat">
+  <div class="cat-shadow"></div>
+  <div class="body"></div>
+  <div class="paw"></div>
+
+  
+<div class="head-wrap">
+  <div class="head">
+    <div class="ear left"></div>
+    <div class="ear right"></div>
+
+    <div class="eye left"></div>
+    <div class="eye right"></div>
+
+    <div class="nose"></div>
+
+  </div>
+</div>
+   <div class="tail">
+  <div class="tail-part p1"></div>
+  <div class="tail-part p2"></div>
+  <div class="tail-part p3"></div>
+  <div class="tail-part p4"></div>
+</div>
+</div>
+
+
+<script>
+  const toggle = document.getElementById("toggle");
+  const windowEl = document.querySelector(".window");
+
+  toggle.addEventListener("change", () => {
+    if (toggle.checked) {
+      windowEl.classList.remove("day");
+      windowEl.classList.add("night");
+    } else {
+      windowEl.classList.remove("night");
+      windowEl.classList.add("day");
+    }
+  });
+</script>
+
+</div>
+</body>
+</html>
